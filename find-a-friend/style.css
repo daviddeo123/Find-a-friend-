@@ -15,11 +15,12 @@ main {
   padding: 20px;
 }
 
-section {
+section, .login-container {
   background: white;
   padding: 20px;
-  margin-bottom: 20px;
+  margin: 20px auto;
   border-radius: 10px;
+  max-width: 400px;
 }
 
 input {
@@ -39,4 +40,18 @@ button {
 
 button:hover {
   background: #45a049;
+}
+
+.profile-card {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background: #222;
+  color: white;
 }
