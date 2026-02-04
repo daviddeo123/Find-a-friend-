@@ -1,8 +1,16 @@
 const form = document.getElementById("profileForm");
 const profileList = document.getElementById("profileList");
 
-let profiles = [];
+// Get current username from localStorage
+const currentUser = localStorage.getItem('currentUser');
 
+// Initialize profiles for this user
+let profiles = JSON.parse(localStorage.getItem(currentUser)) || [];
+
+// Display profiles when page loads
+displayProfiles();
+
+// Form submit
 form.addEventListener("submit", function(e) {
   e.preventDefault();
 
@@ -13,10 +21,14 @@ form.addEventListener("submit", function(e) {
   const profile = { name, age, country };
   profiles.push(profile);
 
+  // Save profiles for this user
+  localStorage.setItem(currentUser, JSON.stringify(profiles));
+
   displayProfiles();
   form.reset();
 });
 
+// Display function
 function displayProfiles() {
   profileList.innerHTML = "";
 
@@ -33,4 +45,3 @@ function displayProfiles() {
     profileList.appendChild(div);
   });
 }
-
