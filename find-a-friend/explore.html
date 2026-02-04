@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore Friends - Find a Friend</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Explore Friends 🌍</h1>
+  <button id="logoutBtn" style="float:right;">Logout</button>
+  <button id="homeBtn" style="float:right; margin-right:10px;">My Profiles</button>
+</header>
+
+<main>
+  <section class="profiles">
+    <h2>All Users</h2>
+    <div id="exploreList"></div>
+  </section>
+</main>
+
+<script>
+const exploreList = document.getElementById('exploreList');
+const logoutBtn = document.getElementById('logoutBtn');
+const homeBtn = document.getElementById('homeBtn');
+
+// Get current user
+const currentUser = localStorage.getItem('currentUser');
+if(!currentUser){
+    window.location.href = 'login.html';
+}
+
+// Logout
+logoutBtn.addEventListener('click', () => {
+    localStorage.removeItem('loggedIn');
+    localStorage.removeItem('currentUser');
+    window.location.href = 'login.html';
+});
+
+// Go back to main profile page
+homeBtn.addEventListener('click', () => {
+    window.location.href = 'index.html';
+});
+
+// Show all users except current user
+function showAllUsers(){
+    exploreList.innerHTML = "";
+    for(let key in localStorage){
+        // skip unrelated keys
+        if(key === 'loggedIn' || key === 'currentUser') continue;
+
+        let userProfiles = JSON.parse(localStorage.getItem(key));
+        if(!userProfiles) continue;
+
+        // create user card
+        const div = document.createElement('div');
+        div.classList.add('profile-card');
+
+        div.innerHTML = `<h3>${key}'s Profiles</h3>`;
+        userProfiles.forEach(p => {
+            div.innerHTML += `<p>${p.name}, Age: ${p.age}, Country: ${p.country}</p>`;
+        });
+
+        exploreList.appendChild(div);
+    }
+}
+
+showAllUsers();
+</script>
+
+</body>
+</html>
