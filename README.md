@@ -41,5 +41,31 @@ Welcome to **Find a Friend**, a fun and safe website where you can create a prof
 
 ---
 
+## 🌈 How It Looks
+
+**Login Page**  
+![Login Page](https://via.placeholder.com/400x200.png?text=Login+Page)
+
+**Main Page / Friend List**  
+![Friend List](https://via.placeholder.com/400x300.png?text=Friend+List)
+
+---
+
+## 🛠 Future Improvements
+
+- 📷 Add **profile pictures**  
+- 💬 Add a **chat system**  
+- 🌐 Connect to a **real database**  
+- 📱 Make a **mobile app version**  
+
+---
+
+## 👤 Author
+
+**David Mbasa** – 14, Tanzania  
+Made with ❤️ for fun and learning.
+
+---
+
 ## 📂 Folder Structure
 
