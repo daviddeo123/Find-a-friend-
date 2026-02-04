@@ -17,22 +17,28 @@
     <p id="error" style="color:red"></p>
   </div>
 
-  <script>
-    const loginForm = document.getElementById('loginForm');
+<script>
+const loginForm = document.getElementById('loginForm');
 
-    loginForm.addEventListener('submit', function(e){
-      e.preventDefault();
+// Check if user is already logged in
+if(localStorage.getItem('loggedIn') === 'true'){
+    window.location.href = 'index.html'; // skip login page
+}
 
-      const user = document.getElementById('username').value;
-      const pass = document.getElementById('password').value;
+loginForm.addEventListener('submit', function(e){
+    e.preventDefault();
 
-      // hardcoded credentials
-      if(user === 'David' && pass === '1234'){
-        window.location.href = 'index.html'; // go to main page
-      } else {
+    const user = document.getElementById('username').value;
+    const pass = document.getElementById('password').value;
+
+    // hardcoded credentials
+    if(user === 'David' && pass === '1234'){
+        localStorage.setItem('loggedIn', 'true'); // remember login
+        window.location.href = 'index.html';
+    } else {
         document.getElementById('error').innerText = 'Wrong username or password';
-      }
-    });
-  </script>
+    }
+});
+</script>
 </body>
 </html>
