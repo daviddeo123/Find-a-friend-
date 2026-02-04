@@ -10,29 +10,27 @@ form.addEventListener("submit", function(e) {
   const age = document.getElementById("age").value;
   const country = document.getElementById("country").value;
 
-  const profile = {
-    name,
-    age,
-    country
-  };
-
+  const profile = { name, age, country };
   profiles.push(profile);
-  showProfiles();
+
+  displayProfiles();
   form.reset();
 });
 
-function showProfiles() {
+function displayProfiles() {
   profileList.innerHTML = "";
 
-  profiles.forEach(p => {
+  profiles.forEach(profile => {
     const div = document.createElement("div");
+    div.classList.add("profile-card");
 
     div.innerHTML = `
-      <h3>${p.name}</h3>
-      <p>Age: ${p.age}</p>
-      <p>Country: ${p.country}</p>
+      <h3>${profile.name}</h3>
+      <p>Age: ${profile.age}</p>
+      <p>Country: ${profile.country}</p>
     `;
 
     profileList.appendChild(div);
   });
 }
+
