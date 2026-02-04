@@ -16,13 +16,12 @@
     </form>
     <p id="error" style="color:red"></p>
   </div>
-
 <script>
 const loginForm = document.getElementById('loginForm');
 
 // Check if user is already logged in
 if(localStorage.getItem('loggedIn') === 'true'){
-    window.location.href = 'index.html'; // skip login page
+    window.location.href = 'index.html';
 }
 
 loginForm.addEventListener('submit', function(e){
@@ -31,9 +30,16 @@ loginForm.addEventListener('submit', function(e){
     const user = document.getElementById('username').value;
     const pass = document.getElementById('password').value;
 
-    // hardcoded credentials
-    if(user === 'David' && pass === '1234'){
-        localStorage.setItem('loggedIn', 'true'); // remember login
+    // Hardcoded credentials example
+    const users = {
+        'David': '1234',
+        'Friend1': '1111',
+        'Friend2': '2222'
+    };
+
+    if(users[user] && users[user] === pass){
+        localStorage.setItem('loggedIn', 'true');   // Remember login
+        localStorage.setItem('currentUser', user);  // Save which user is logged in
         window.location.href = 'index.html';
     } else {
         document.getElementById('error').innerText = 'Wrong username or password';
