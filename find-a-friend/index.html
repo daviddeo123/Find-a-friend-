@@ -36,6 +36,13 @@
   <p>© 2026 Find a Friend | Made with ❤️</p>
 </footer>
 
-<script src="script.js"></script>
+<script>
+const logoutBtn = document.getElementById('logoutBtn');
+
+logoutBtn.addEventListener('click', function(){
+    localStorage.removeItem('loggedIn'); // remove login
+    window.location.href = 'login.html'; // go back to login page
+});
+</script>
 </body>
 </html>
